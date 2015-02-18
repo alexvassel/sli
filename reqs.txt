@@ -1,0 +1,4 @@
+WTForms==2.0.2
+beautifulsoup4==4.3.2
+tornado==4.1
+wtforms-tornado==0.0.2

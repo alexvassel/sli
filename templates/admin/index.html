@@ -1,0 +1,29 @@
+{% extends "../base.html" %}
+{% block title %}Панель администратора{% end %}
+{% block body %}
+    <h1>Страницы</h1>
+    <br/>
+    <table id='urls' class='table'>
+      <thead>
+          <th>Адрес</th><th>Показывать на основной странице</th><th>Обработан</th>
+      </thead>
+      {% for url in urls %}
+        <tr>
+          <td><a href="url/{{ url['id'] }}/">{{ url['href'] }}</a></td>
+          <td>{% if url['show'] == 'True' %}Да{% else %}Нет{% end %}</td>
+          <td>{% if url['ready'] == 'True' %}Да{% else %}Нет{% end %}</td>
+        </tr>
+      {% end %}
+    </table>
+    <br/>
+    <h1>Добавить адрес</h1>
+    <br/>
+    <form method="POST" action="">
+        <div class="form-group">{{ form.href(class_="form-control") }}</div>
+        {% if form.href.errors %}
+            <ul class="errors">{% for error in form.href.errors %}<li>{{ error }}</li>{% end %}</ul>
+        {% end %}
+        <br/>
+        <input class='btn btn-default' type='submit' value='Добавить'/>
+    </form>
+{% end %}

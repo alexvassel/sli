@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block additional_static %}
+    <script src='static/index.js'></script>
+{% end %}
+{% block title %}Главная страница{% end %}
+{% block body %}
+    <h1>Страницы</h1>
+    <br/>
+    <table id='urls' class='table'>
+      <thead>
+          <tr><th style='display: none'>id</th><th>Адрес</th><th>Заголовок</th></tr>
+      </thead>
+      {% for url in urls %}
+        <tr>
+          <td class='url-id' style='display: none'>{{ url['id'] }}</td>
+          <td>{{ url['href'] }}</td>
+          <td class='title'>
+              {% if url['ready'] == 'True' and url['response'] %}{{ url['response'] }}{% else %}-{% end %}
+          </td>
+        </tr>
+      {% end %}
+    </table>
+    <a id='request-titles' class='btn btn-default' href='' role='button'>Получить заголовки</a>
+{% end %}

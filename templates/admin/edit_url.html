@@ -1,0 +1,23 @@
+{% extends "../base.html" %}
+{% block title %}Панель администратора - Редактирование адреса{% end %}
+{% block body %}
+    <h1>{{ url['href'] }}</h1>
+    <form method="POST" action="">
+        <div class="form-group"><label>{{ form.href.label.text }}</label> {{ form.href(class_="form-control") }}</div>
+            {% if form.href.errors %}
+                <ul class="errors">{% for error in form.href.errors %}<li>{{ error }}</li>{% end %}</ul>
+            {% end %}
+        <br/>
+        <div class="checkbox"><label>{{ form.ready }}{{ form.ready.label.text }}</label></div>
+        {% if form.ready.errors %}
+            <ul class="errors">{% for error in form.ready.errors %}<li>{{ error }}</li>{% end %}</ul>
+        {% end %}
+        <br/>
+        <div class="checkbox"><label>{{ form.show }}{{ form.show.label.text }}</label></div>
+        {% if form.show.errors %}
+            <ul class="errors">{% for error in form.show.errors %}<li>{{ error }}</li>{% end %}</ul>
+        {% end %}
+        <br/>
+        <input class='btn btn-default' type='submit' value='Сохранить'/>
+        </form>
+{% end %}
