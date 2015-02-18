@@ -2,14 +2,19 @@
 import sqlite3
 import tornado.web
 
+# Имя таблицы с адресами
 SQLITE_URLS_TABLE = 'url'
 
 
 class BaseHandler(tornado.web.RequestHandler):
+    """
+    Проверка авторизации
+    """
     def get_current_user(self):
         return self.get_secure_cookie('user')
 
 
+# Для более сложной БД стоит использовать ORM (sqlalchemy, например)
 def execute(query):
     """Выполнение запроса к sqlite"""
     dbPath = 'sli.sqlite'

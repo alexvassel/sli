@@ -78,10 +78,10 @@ class CheckResponses(tornado.web.RequestHandler):
 
 
 class Login(tornado.web.RequestHandler):
+    """
+        Авторизация намеренно упрощена
+    """
     def get(self):
-        """
-        Простая форма логина
-        """
         form = forms.LoginForm()
         self.render('admin/login.html', form=form)
 
